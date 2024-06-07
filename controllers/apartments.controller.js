@@ -25,3 +25,19 @@ module.exports.create = (req, res, next) => {
     })
     .catch(next);
 };
+
+module.exports.update = (req, res, next) => {
+  Apartment.findByIdAndUpdate(req.params.id, req.body)
+    .then((editedApartment) => {
+      res.json(editedApartment);
+    })
+    .catch(next);
+};
+
+module.exports.delete = (req, res, next) => {
+  Apartment.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.send('Apartment deleted');
+    })
+    .catch(next);
+};
