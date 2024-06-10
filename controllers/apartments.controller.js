@@ -1,6 +1,7 @@
-const Apartment = require('../models/Apartment.model');
+const Apartment = require("../models/Apartment.model");
 
 module.exports.list = (req, res, next) => {
+  console.log(req.headers);
   Apartment.find()
     .then((apartments) => {
       res.json(apartments);
@@ -37,7 +38,7 @@ module.exports.update = (req, res, next) => {
 module.exports.delete = (req, res, next) => {
   Apartment.findByIdAndDelete(req.params.id)
     .then(() => {
-      res.send('Apartment deleted');
+      res.send("Apartment deleted");
     })
     .catch(next);
 };
