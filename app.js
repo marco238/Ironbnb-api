@@ -9,9 +9,11 @@ require("./config/db.config"); // database initial setup
 
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:5173"
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -23,9 +25,8 @@ app.use("/", router);
 
 // Middleware to handle errors.
 app.use((err, req, res, next) => {
-  console.error(err);
-  res.json(err);
-})
+  res.status(err.status).json(err);
+});
 
 const port = process.env.PORT || 3000;
 

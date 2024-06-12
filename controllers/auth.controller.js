@@ -23,6 +23,7 @@ module.exports.login = (req, res, next) => {
       // Check password
       return user.checkPassword(password).then((match) => {
         if (!match) {
+          console.log("ENTRO CON ERROR");
           return next(loginError);
         }
 
