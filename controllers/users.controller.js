@@ -9,7 +9,7 @@ module.exports.create = (req, res, next) => {
 
   User.create({ email, password })
     .then((userCreated) => {
-      res.status(302).json(userCreated);
+      res.status(204).json(userCreated);
     })
     .catch(next);
 };
